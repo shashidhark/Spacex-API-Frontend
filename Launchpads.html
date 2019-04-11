@@ -60,15 +60,6 @@
                   </div>
             <script src="./assets/js/jquery.min.js"></script>
             <script src="./assets/js/bootstrap.min.js"></script>
-
-
-          
-
-
-
-           
-
-
             <script type="text/javascript">
             $(document).ready(function()
             {
@@ -88,12 +79,12 @@
                                     $("#siteName").text("Site Name:"+res.site_name_long); 
                                     $("#attempted_launches").text("Attempted Launches:"+res. attempted_launches); 
                                     $("#successful_launches").text("Successful Launches:"+res.successful_launches); 
-                                    $("#details").text("Details:"+res.details); 
+                                    $("#details").text("Details:"+res.deails); 
                                 let  latitude1=res.location.latitude;
                                 let  longitude1=res.location.longitude;
                                 let  lName=res.location.name;
                                      loadMap(latitude1,longitude1,lName);
-                                //  let markers=getJSONMapMarkers(latitude1,longitude1);
+                            
                                 
                                        $('#myModal').modal('toggle');
                             
