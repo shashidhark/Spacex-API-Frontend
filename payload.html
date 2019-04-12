@@ -4,68 +4,11 @@
         <title>payload ids</title>
         <link href="./assets/css/navbar.css" rel="stylesheet">
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <style>
-            /* Popup container - can be anything you want */
-            .popup {
-              position: relative;
-              display: inline-block;
-              cursor: pointer;
-              -webkit-user-select: none;
-              -moz-user-select: none;
-              -ms-user-select: none;
-              user-select: none;
-            }
-            
-            /* The actual popup */
-            .popup .popuptext {
-              visibility: hidden;
-              width: 160px;
-              background-color: #555;
-              color: #fff;
-              text-align: center;
-              border-radius: 6px;
-              padding: 8px 0;
-              position: absolute;
-              z-index: 1;
-              bottom: 125%;
-              left: 50%;
-              margin-left: -80px;
-            }
-            
-            /* Popup arrow */
-            .popup .popuptext::after {
-              content: "";
-              position: absolute;
-              top: 100%;
-              left: 50%;
-              margin-left: -5px;
-              border-width: 5px;
-              border-style: solid;
-              border-color: #555 transparent transparent transparent;
-            }
-            
-            /* Toggle this class - hide and show the popup */
-            .popup .show {
-              visibility: visible;
-              -webkit-animation: fadeIn 1s;
-              animation: fadeIn 1s;
-            }
-            
-            /* Add animation (fade in the popup) */
-            @-webkit-keyframes fadeIn {
-              from {opacity: 0;} 
-              to {opacity: 1;}
-            }
-            
-            @keyframes fadeIn {
-              from {opacity: 0;}
-              to {opacity:1 ;}
-            }
-            </style>
+        
         
         
     </head>
@@ -103,19 +46,20 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
+          <h4 class="modal-title"></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body" id="mission2" >
-          Modal body.. 
+          <b>Details</b> 
           <p id=mission3></p>
           <p id=mission4></p>
-          <p id=mission5></p>
-          <p id=mission6></p>
+          <a a href="#" id=mission5>Sattellite_Constellation Link</a></br>
+          <a a href="#" id=mission6>twitter Link</a>
           <p id=mission7></p>
           <p id=mission8></p>
+         
 
         </div>
         
@@ -187,10 +131,16 @@
                                 //$('#mission').html(res)
                                 document.getElementById("mission3").innerHTML=res.mission_name;
                                 document.getElementById("mission4").innerHTML=res.manufacturers;
-                                document.getElementById("mission5").innerHTML=res.wikipedia;
-                                document.getElementById("mission6").innerHTML=res.twitter;
+                                document.getElementById("mission5").ahref="https://en.wikipedia.org/wiki/Iridium_satellite_constellation";
+                                document.getElementById("mission6").ahref="https://twitter.com/IridiumBoss?lang=en";
+
+                                //document.getElementById("mission5").innerHTML=res.wikipedia;
+                               // document.getElementById("mission6").innerHTML=res.twitter;
+
                                 document.getElementById("mission7").innerHTML=res.description;
-                                document.getElementById("mission8").innerHTML=res.website;
+                               // var wikiLink = $("<p />").html("Link: <a href='"+r.wikipedia+"'>Wiki link</a>")
+                               //document.getElementById("IDOFELEMENT").href = "http://www.fb.com";
+                                document.getElementById("mission8").href="http://www.fb.com";
                                 document.getElementById("mission9").innerHTML=res.payload_ids;
                                
                                 $("#myModal").modal("toggle")
@@ -280,10 +230,10 @@
                   liContent.append(twitter)
                   liContent.append(description)
                   r.payload_ids.forEach(function(payload_id){
-                    console.log(payload_id);
-                    var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
-                    payload.on("click",popup1);
-                 liContent.append(payload);
+                  console.log(payload_id);
+                  var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
+                  payload.on("click",popup1);
+                  liContent.append(payload);
                   })
                     
                   

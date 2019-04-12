@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <style>
+  #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+    <title>SHIPS</title>
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/navbar.css" rel="stylesheet">
+    <body>
+            <div class="container">
+                    <!-- Static navbar -->
+                    <nav class="navbar navbar-default">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="#">SHIPS DETAILS</a>
+                        </div>
+                       
+                      </div><!--/.container-fluid -->
+                    </nav>
+                    <h4>Ships</h4>
+                    <div id="Launch">Loading ....</div>
+                </div> <!-- /container -->
+
+            <!-- Modal classes -->
+            <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog" >
+                  
+                      <!-- Modal content-->
+                      <div class="modal-content" style="width: fit-content;" >
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body" id="val">
+                          <p id="ship_id"> </p>
+                          <p id="ship_name"></p>
+                          <p id="ship_model"></p>
+                          <p id="ship_type"></p>
+                          <p id="roles"></p>
+                          <p id="missions1"><p id="missions" ></p></p>
+                          <div id="url"></div>
+
+                          <div class="wrapper">
+                            <ul></ul>
+                            <div class="profile"></div>
+                         </div>
+                         
+                        
+                           </p>
+                          <div id = "map" ></div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  
+                    </div>
+                  </div>
+            <script src="./assets/js/jquery.min.js"></script>
+            <script src="./assets/js/bootstrap.min.js"></script>
+            <script type="text/javascript">
+            $(document).ready(function()
+            {
+                function jsUcfirst(string){
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
+
+                function knowDetails()
+                {
+                    debugger
+                        var site_Id=$(this).data("id");
+                        var ul = $('ul');
+                        //var liContent=$("<div/>");
+                        //var site_Id=$(this).find("a").data("itemid");
+                       
+                        var $ulOne=$("<ul/>").addClass("list-group");
+                        $.ajax({
+                            url:"https://api.spacexdata.com/v3/ships/"+site_Id,   
+                            
+                            success:function(res){
+                                var liconntent=$("<div/>");
+                                $("#missions").empty();
+                                $("#ship_id").html('<b>Ship ID:</b>'+res.ship_id); 
+                                $("#ship_name").html('<b>Ship Name:</b>'+res.ship_name); 
+                                $("#ship_model").html('<b>Ship Model:</b>'+res.ship_model); 
+                                $("#ship_type").html('<b>Ship Type:</b>'+res.ship_type); 
+                                $("#roles").html('<b>Ship Roles:</b>'+res.roles);
+                                $("#missions1").html('<b>Ship Missions:</b>');
+                                var twitter = $("#url").html("Link: <a href='"+res.url+"'>twitter link</a>")
+                                ul.append('<li><a href="#">' + res.url + '</a></li>')
+                                //liContent.append(twitter)
+                               ul.append(twitter)
+                                liconntent.append(twitter);
+                                res.missions.forEach(function(mission){
+                                    for(var key in mission){
+                                        $("#missions").append($("<p style='margin-left:20px'/>").html('<b>'+jsUcfirst(key)+"</b> : "+mission[key]));
+                                    }  
+                                })
+                                let  latitude1=res.position.latitude;
+                                let  longitude1=res.position.longitude;
+                                loadMap(latitude1,longitude1);
+                               
+                                $('#myModal').modal('toggle');
+                            
+                            }
+                        })
+                      
+                }
+                $.ajax({
+                    url:"https://api.spacexdata.com/v3/ships",
+                    success: function(result){
+                        $("#Launch").empty();
+                        var $ul=$("<span/>").addClass("list-group");
+                        result.forEach(r=> {
+                            var id=$("<p/>").html('<b>SHIP ID: </b>'+r.ship_id);
+                            var status=$("<p/>").html('<b>SHIP NAME:</b>' +r.ship_name);
+                            var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.ship_id+"/>").text("Details").addClass("btn btn-info btn-lg")
+                            detailButton.on("click",knowDetails);
+                            var liconntent=$("<div/>");
+                            liconntent.append(id);
+                            liconntent.append(status);
+                            liconntent.append(detailButton)
+                            var lielement=$("<span/>").addClass("list-group-item").append(liconntent);
+                           $ul.append(lielement);
+                        });
+                        $("#Launch").append($ul);
+                    }
+                })
+               
+            });
+            </script>
+          <script>
+       
+        
+
+        function getJSONMapMarkers(lt,lg,lname) {
+          const markers = [
+            {
+              name:  lname,
+              location: [Number(lt), Number(lg)]
+            }
+          ];
+          return markers;
+        }
+
+
+        function loadMap(lt,lg,lname) {     
+            const mapOptions = {
+            center:new google.maps.LatLng(25.2048, 55.2708),
+            zoom: 4,
+            mapTypeControlOptions: {
+                mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain','styled_map']
+            }
+        }
+        const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        const hotelMarkers = getJSONMapMarkers(lt,lg,lname);
+        // Initialize Google Markers
+        for(hotel of hotelMarkers) {
+            let marker = new google.maps.Marker({
+              map: map,
+              position: new google.maps.LatLng(hotel.location[0], hotel.location[1]),
+              title: hotel.name
+            })
+        }
+    }
+             
+    </script>
+          
+             <script src = "https://maps.googleapis.com/maps/api/js"></script>
+              
+
+    </body>
+</html>
