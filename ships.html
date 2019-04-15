@@ -36,6 +36,7 @@
                   
                       <!-- Modal content-->
                       <div class="modal-content" style="width:auto;" >
+                      <div class="modal-content" style="width: fit-content;" >
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title"></h4>
@@ -103,7 +104,7 @@
                 {
                     debugger
                         var site_Id=$(this).data("id");
-                        var ul = $('ul');                       
+                        var ul = $('ul');   
                         var $ulOne=$("<ul/>").addClass("list-group");
                         $.ajax({
                             url:"https://api.spacexdata.com/v3/ships/"+site_Id,   
@@ -112,7 +113,7 @@
                                 var liconntent=$("<div/>");
                                 $("#missions").empty();
                                 $("#ship_id").html('<b>Ship ID:</b>'+res.ship_id);
-                                $("#ship_name").html('<b>Ship Name:</b><a href="'+res.url+'" target="_blank">'+res.ship_name+'</a>'); 
+                                $("#ship_name").html('<b>Ship Name:</b><a href="'+res.url+'" target="_blank">'+res.ship_name+'</a>');
                                 $("#ship_model").html('<b>Ship Model:</b>'+res.ship_model); 
                                 $("#ship_type").html('<b>Ship Type:</b>'+res.ship_type); 
                                 $("#roles").html('<b>Ship Roles:</b>'+res.roles);
@@ -154,7 +155,7 @@
                 })
                
             });
-            
+              
             </script>
           <script>
        
