@@ -102,7 +102,7 @@
                             var Location=$("<p/>").html("<b>Location:</b>"+r.location.name);
                             var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.site_id+"/>").text("Details").addClass("btn btn-info btn-lg")
                             detailButton.on("click",knowDetails);
-                            var liconntent=$("<div style=Background-color:#fbf5f5;/>");
+                            var liconntent=$("<div/>");
                             liconntent.append(id);
                             liconntent.append(status);
                             liconntent.append(Location);
@@ -129,20 +129,6 @@
 
 
         function loadMap(lt,lg,lname) {
-          // Initialize Google Maps
-          // var styledMapType = new google.maps.StyledMapType(
-          //   [
-          //   {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
-          //     {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
-          //     {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
-          //     {
-          //       featureType: 'administrative',
-          //       elementType: 'geometry.stroke',
-          //       stylers: [{color: '#c9b2a6'}]
-          //     },
-          //     ]
-          //     {name: 'Styled Map'});
-              
           const mapOptions = {
             center:new google.maps.LatLng(25.2048, 55.2708),
             zoom: 4,
