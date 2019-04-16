@@ -4,68 +4,7 @@
         <title>payload ids</title>
         <link href="./assets/css/navbar.css" rel="stylesheet">
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <style>
-            /* Popup container - can be anything you want */
-            .popup {
-              position: relative;
-              display: inline-block;
-              cursor: pointer;
-              -webkit-user-select: none;
-              -moz-user-select: none;
-              -ms-user-select: none;
-              user-select: none;
-            }
-            
-            /* The actual popup */
-            .popup .popuptext {
-              visibility: hidden;
-              width: 160px;
-              background-color: #555;
-              color: #fff;
-              text-align: center;
-              border-radius: 6px;
-              padding: 8px 0;
-              position: absolute;
-              z-index: 1;
-              bottom: 125%;
-              left: 50%;
-              margin-left: -80px;
-            }
-            
-            /* Popup arrow */
-            .popup .popuptext::after {
-              content: "";
-              position: absolute;
-              top: 100%;
-              left: 50%;
-              margin-left: -5px;
-              border-width: 5px;
-              border-style: solid;
-              border-color: #555 transparent transparent transparent;
-            }
-            
-            /* Toggle this class - hide and show the popup */
-            .popup .show {
-              visibility: visible;
-              -webkit-animation: fadeIn 1s;
-              animation: fadeIn 1s;
-            }
-            
-            /* Add animation (fade in the popup) */
-            @-webkit-keyframes fadeIn {
-              from {opacity: 0;} 
-              to {opacity: 1;}
-            }
-            
-            @keyframes fadeIn {
-              from {opacity: 0;}
-              to {opacity:1 ;}
-            }
-            </style>
+        
         
         
     </head>
@@ -84,13 +23,7 @@
                   </button>
                   <a class="navbar-brand" href="#">Spacex API</a>
                 </div>
-                <!-- <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-                </div> -->
+               
               </div><!--/.container-fluid -->
             </nav>
             <h4>History</h4>
@@ -103,7 +36,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
+          <h4 class="modal-title">DETAILS</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -112,10 +45,7 @@
           Modal body.. 
           <p id=mission3></p>
           <p id=mission4></p>
-          <p id=mission5></p>
-          <p id=mission6></p>
           <p id=mission7></p>
-          <p id=mission8></p>
 
         </div>
         
@@ -134,7 +64,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
+          <h4 class="modal-title">DETAILS</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -183,14 +113,9 @@
                             //type: 'GET',
                             url:"https://api.spacexdata.com/v3/missions/"+site_Id+"",    
                             success:function(res){
-                                //$('#mission').html(res).modal('show');
-                                //$('#mission').html(res)
                                 document.getElementById("mission3").innerHTML=res.mission_name;
                                 document.getElementById("mission4").innerHTML=res.manufacturers;
-                                document.getElementById("mission5").innerHTML=res.wikipedia;
-                                document.getElementById("mission6").innerHTML=res.twitter;
                                 document.getElementById("mission7").innerHTML=res.description;
-                                document.getElementById("mission8").innerHTML=res.website;
                                 document.getElementById("mission9").innerHTML=res.payload_ids;
                                
                                 $("#myModal").modal("toggle")
@@ -208,10 +133,7 @@
                             //type: 'GET',
                             url:"https://api.spacexdata.com/v3/payloads/"+site_Id+"",    
                             success:function(res){
-                               
-                               //document.getElementById("mission3").innerHTML="nationality";
                                 document.getElementById("mission3").innerHTML=res.nationality;
-                               // document.getElementById("myModal1").innerHTML="manufacturer";
                                 document.getElementById("mission4").innerHTML=res.manufacturer;
                                 document.getElementById("mission5").innerHTML=res.payload_type;
                                 document.getElementById("mission6").innerHTML=res.payload_mass_kg;
@@ -244,46 +166,27 @@
                 result.forEach(function(r){
                   var mname = $("<p />").text("Mission Name: "+r.mission_name)
                   var mid = $("<p />").text("Mission Id: "+r.mission_id)
-                  var Btn1=$("<Button data-id="+r.mission_id+"/ >").text("Details")
-                  Btn1.on("click",popup)
-                
-                   var manufacturers = $("<p />").text("Manufacturers: "+r.manufacturers)
-                   var wikiLink = $("<p />").html("Link: <a href='"+r.wikipedia+"'>Wiki link</a>")
-                   var website = $("<p />").html("Link: <a href='"+r.website+"'>Web link</a>")
-                   var twitter = $("<p />").html("Link: <a href='"+r.twitter+"'>twitter link</a>")
-                   var description = $("<p />").text("Description: "+r.description)
-                   //var payload_ids = $("<p />").text("Description: "+r.payload_ids)
-                   
-                   //var payload_ids = $("<p />").html("Link: <a href='"+r.twitter+"'>twitter link</a>")
-                   
-                   
-                   //var Btn2=$("<Button data-id="+r.payload_ids+"/ >").text("Det")
-                  //Btn2.on("click",popup1)
-                  
-                  
-                  
-                    
-                
-                   // liContent.append(payload_ids)
-                    //payload_ids.on("click",popup1)
-                
-            
-                debugger
-
+                  var mdetails=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-info btn-lg")
+                  mdetails.on("click",popup)
+                  // var manufacturers = $("<p />").text("Manufacturers: "+r.manufacturers)
+                  var wikiLink = $("<p />").html("Link: <a href='"+r.wikipedia+"'>Wiki link</a>")
+                  var website = $("<p />").html("Link: <a href='"+r.website+"'>Web link</a>")
+                  var twitter = $("<p />").html("Link: <a href='"+r.twitter+"'>twitter link</a>")
+                  // var description = $("<p />").text("Description: "+r.description)
                   var liContent = $("<div />")
                   liContent.append(mname)
                   liContent.append(mid)
-                  liContent.append(Btn1)
-                  liContent.append(manufacturers)
+                  liContent.append(mdetails)
+                  // liContent.append(manufacturers)
                   liContent.append(wikiLink)
                   liContent.append(website)
                   liContent.append(twitter)
-                  liContent.append(description)
+                  // liContent.append(description)
                   r.payload_ids.forEach(function(payload_id){
-                    console.log(payload_id);
-                    var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
-                    payload.on("click",popup1);
-                 liContent.append(payload);
+                  console.log(payload_id);
+                  var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
+                  payload.on("click",popup1);
+                  liContent.append(payload);
                   })
                     
                   
@@ -295,17 +198,11 @@
                 });
 
                 $("#mission").append($ulElement);
-                //$("#mission1").append($ulElement);
-                //$("#mission").append($ulElement1);
+                
               }
             });
           });
 
-          //---------------
-         
-  
-
- 
         </script>
     </body>
 </html>

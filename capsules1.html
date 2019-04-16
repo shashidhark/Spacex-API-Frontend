@@ -1,0 +1,271 @@
+<html>
+  <head>
+    <style>
+  #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+    <title>CAPSULES</title>
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <body>
+            <div class="container">
+                    <!-- Static navbar -->
+                    <nav class="navbar navbar-default">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="#">Spacex API</a>
+                        </div>
+                       
+                      </div><!--/.container-fluid -->
+                    </nav>
+                    <h4>CAPSULES DETAILS</h4>
+                    <!-- <div class="progress" id="myBar1">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" id="myBar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                          0%
+                        </div>
+                        </div> -->
+                    </br>
+
+                    <button type="button" class="btn btn-primary" onclick="move()" id="upcoming">Upcoming Capsules</button>
+                <button type="button" class="btn btn-warning" onclick="move()" id="past">Past Capsules</button>
+                <button type="button" class="btn btn-success" onclick="move()" id="initial">Initial Capsules</button>
+                    <div id="Launch">Loading ....</div>
+                </div> <!-- /container -->
+
+            <!-- Modal classes -->
+            <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog" >
+                  
+                      <!-- Modal content-->
+                      <div class="modal-content" style="width:auto;" >
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body" id="val">
+                            <p id="capsule1">
+                                <p id="capsule2"> </p>
+                                <p id="capsule3"></p>
+                                <p id="capsule4"></p>
+                                <p id="capsule5"></p>
+                                <p id="capsule6"></p>
+                                <p id="mission1" ></p><p id="capsule7" ></p> 
+                                <p id="capsule8"></p>
+                                <p id="capsule9"></p>
+                                <p id="capsule10"></p>
+                                <p id="capsule11"></p>
+                                <p id="capsule11"></p>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  
+                    </div>
+                  </div>
+                 
+            <script src="./assets/js/jquery.min.js"></script>
+            <script src="./assets/js/bootstrap.min.js"></script>
+            <script type="text/javascript">
+            $(document).ready(function()
+            {
+                debugger
+                function jsUcfirst(string){
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
+
+               
+                $("#upcoming").click(function(){
+                    debugger
+                    $.ajax({
+                        url:"https://api.spacexdata.com/v3/capsules/upcoming",
+                        success: function(res){
+                                 //$("#Launch").html(res);
+                        $("#Launch").empty();
+                        var $ul=$("<span/>").addClass("list-group");
+                        res.forEach(r=> {
+                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var status=$("<p/>").html('<b>Status:</b>' +r.status); 
+                            var original_launch=$("<p/>").html('<b>Original Launch:</b>' +r.original_launch); 
+                            var original_launch_unix=$("<p/>").html('<b>original_launch_unix:</b>' +r.original_launch_unix); 
+                            var landings=$("<p/>").html('<b>landings:</b>' +r.landings); 
+                            var type=$("<p/>").html('<b>type:</b>' +r.type); 
+                            var details=$("<p/>").html('<b>details:</b>' +r.details); 
+                            var reuse_count=$("<p/>").html('<b>reuse_count:</b>' +r.reuse_count); 
+                            var liconntent=$("<div/>");
+                            liconntent.append(Cserial);
+                            liconntent.append(status);
+                            liconntent.append(original_launch);
+                            liconntent.append(original_launch_unix);
+                            liconntent.append(landings);
+                            liconntent.append(type);
+                            liconntent.append(details);
+                            liconntent.append(reuse_count);
+                            //liconntent.append(details);
+                            var lielement=$("<span/>").addClass("list-group-item").append(liconntent);
+                            debugger
+                            
+                           $ul.append(lielement);
+                        });
+                        $("#Launch").append($ul);
+
+                        }
+                    })
+                });
+
+                $("#past").click(function(){
+                    $.ajax({
+                        url:"https://api.spacexdata.com/v3/capsules/past",
+                        success: function(res){
+                                 //$("#Launch").html(res);
+                        $("#Launch").empty();
+                        var $ul=$("<span/>").addClass("list-group");
+                        res.forEach(r=> {
+                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var status=$("<p/>").html('<b>Status:</b>' +r.status); 
+                            var original_launch=$("<p/>").html('<b>Original Launch:</b>' +r.original_launch); 
+                            var original_launch_unix=$("<p/>").html('<b>original_launch_unix:</b>' +r.original_launch_unix); 
+                            var landings=$("<p/>").html('<b>landings:</b>' +r.landings); 
+                            var type=$("<p/>").html('<b>type:</b>' +r.type); 
+                            var details=$("<p/>").html('<b>details:</b>' +r.details); 
+                            var reuse_count=$("<p/>").html('<b>reuse_count:</b>' +r.reuse_count); 
+                            var liconntent=$("<div/>");
+                            liconntent.append(Cserial);
+                            liconntent.append(status);
+                            liconntent.append(original_launch);
+                            liconntent.append(original_launch_unix);
+                            liconntent.append(landings);
+                            liconntent.append(type);
+                            liconntent.append(details);
+                            liconntent.append(reuse_count);
+                            //liconntent.append(details);
+                            var lielement=$("<span/>").addClass("list-group-item").append(liconntent);
+                            debugger
+                            //console.log(r.missions.flight);
+                            r.missions.forEach(function(mission){
+                                for(var key in mission){
+                                    var name=$("<p/>").html('<b>'+jsUcfirst(key)+"</b> : "+mission[key]);
+                                    liconntent.append(name);
+                                }  
+                            })
+                                
+                           $ul.append(lielement);
+                        });
+                        $("#Launch").append($ul);
+
+                        }
+                    })
+                });
+
+                
+                $("#initial").click(function(){
+                    debugger
+                    $.ajax({
+                    url:"https://api.spacexdata.com/v3/capsules",
+                    success: function(result){
+                        
+                    debugger
+                        $("#Launch").empty();
+                        var $ul=$("<span/>").addClass("list-group");
+                        result.forEach(r=> {
+                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.capsule_serial+"/>").text("Details").addClass("btn btn-info")
+                            detailButton.on("click",knowDetails);
+                            var liconntent=$("<div/>");
+                            liconntent.append(Cserial);
+                            liconntent.append(cid);
+                            liconntent.append(detailButton)
+                            var lielement=$("<span/>").addClass("list-group-item").append(liconntent);
+                           $ul.append(lielement);
+                        });
+                        $("#Launch").append($ul);
+                    }
+                })
+                });
+
+                function knowDetails()
+                {
+                    debugger
+                        var site_Id=$(this).data("id");
+                        var ul = $('ul');   
+                        var $ulOne=$("<ul/>").addClass("list-group");
+                        $.ajax({
+                            url:"https://api.spacexdata.com/v3/capsules/"+site_Id,   
+                            
+                            success:function(res){
+                                var liconntent=$("<div/>");
+                                 $("#capsule7").empty();
+                                $("#capsule2").html('<b>Capsule_serial:</b>'+res.capsule_serial);
+                                $("#capsule3").html('<b>Capsule_id:</b>'+res.capsule_id); 
+                                $("#capsule4").html('<b>Status:</b>'+res.status); 
+                                $("#capsule5").html('<b>Original_launch:</b>'+res.original_launch);
+                                $("#capsule6").html('<b>Original_launch_unix:</b>'+res.original_launch_unix);
+                                // $("#capsule7").html('<b>Ship Roles:</b>'+res.missions);
+                                $("#capsule8").html('<b>Landings:</b>'+res.landings);
+                                $("#capsule9").html('<b>Type:</b>'+res.type);
+                                $("#capsule10").html('<b>Details:</b>'+res.details);
+                                $("#capsule11").html('<b>Reuse_count:</b>'+res.reuse_count);
+                                $("#mission1").html('<b>Capsule Missions:</b>');
+                               
+                                res.missions.forEach(function(mission){
+                                    for(var key in mission){
+                                        $("#capsule7").append($("<p style='margin-left:20px'/>").html('<b>'+jsUcfirst(key)+"</b> : "+mission[key]));
+                                    }  
+                                })
+                                
+                               
+                                $('#myModal').modal('toggle');
+                            
+                            }
+                        })
+                      
+                }
+                $.ajax({
+                    url:"https://api.spacexdata.com/v3/capsules",
+                    success: function(result){
+                        
+                    debugger
+                        $("#Launch").empty();
+                        var $ul=$("<span/>").addClass("list-group");
+                        result.forEach(r=> {
+                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.capsule_serial+"/>").text("Details").addClass("btn btn-info")
+                            detailButton.on("click",knowDetails);
+                            var liconntent=$("<div/>");
+                            liconntent.append(Cserial);
+                            liconntent.append(cid);
+                            liconntent.append(detailButton)
+                            var lielement=$("<span/>").addClass("list-group-item").append(liconntent);
+                           $ul.append(lielement);
+                        });
+                        $("#Launch").append($ul);
+                    }
+                })
+               
+            });
+          
+            </script>
+        <!-- //   <script> -->
+       
+        
+
+        
+          
+            
+
+    </body>
+</html>

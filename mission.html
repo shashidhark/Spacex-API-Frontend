@@ -4,10 +4,10 @@
         <title>Spacex mission</title>
         <link href="./assets/css/navbar.css" rel="stylesheet">
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
         
     </head>
     <body>
@@ -108,7 +108,7 @@
                 result.forEach(function(r){
                   var mname = $("<p />").text("Mission Name: "+r.mission_name)
                   var mid = $("<p />").text("Mission Id: "+r.mission_id)
-                  var Btn1=$("<Button data-id="+r.mission_id+"/ >").text("Details")
+                  var Btn1=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-info btn-lg")
                   Btn1.on("click",popup)
                 
                    var manufacturers = $("<p />").text("Manufacturers: "+r.manufacturers)
