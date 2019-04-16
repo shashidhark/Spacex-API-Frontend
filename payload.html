@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>payload ids</title>
+        <link href="./assets/css/navbar.css" rel="stylesheet">
+        <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+
+            <!-- Static navbar -->
+                  <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Spacex API</a>
+                </div>
+               
+              </div><!--/.container-fluid -->
+            </nav>
+            <h4>History</h4>
+            <div id="mission">Loading ....</div>
+          </div> 
+<!--code-->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">DETAILS</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" id="mission2" >
+          <b>Details</b> 
+          <p id=mission3></p>
+          <p id=mission4></p>
+          <p id=mission7></p>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="myModal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">DETAILS</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" >
+          <b>Payload details</b>
+          <p id=mission3></p>
+          <p id=mission3></p>
+          <p id=mission4></p>
+          <p id=mission5></p>
+          <p id=mission6></p>
+          <p id=mission7></p>
+          <p id=mission8></p>
+          <p id=mission9></p>
+          <p id=mission10></p>
+          <p id=mission11></p>
+          <p id=mission12></p>
+          <p id=mission13></p>
+          <p id=mission14></p>
+          <p id=mission15></p>
+          <p id=mission16></p>
+          <p id=mission17></p>
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+          <!-- /container -->
+        <script src="./assets/js/jquery.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+             function popup()
+                {
+                    debugger
+                        var site_Id=$(this).data("id");
+                        console.log(site_Id)
+                        debugger
+                        $.ajax({
+                            //type: 'GET',
+                            url:"https://api.spacexdata.com/v3/missions/"+site_Id+"",    
+                            success:function(res){
+                                document.getElementById("mission3").innerHTML=res.mission_name;
+                                document.getElementById("mission4").innerHTML=res.manufacturers;
+                                document.getElementById("mission7").innerHTML=res.description;
+                                document.getElementById("mission9").innerHTML=res.payload_ids;
+                               
+                                $("#myModal").modal("toggle")
+                            }
+                        })
+                } 
+
+                function popup1()
+                {
+                    debugger
+                        var site_Id=$(this).find("a").data("itemid");
+                        console.log(site_Id)
+                        
+                        $.ajax({
+                            //type: 'GET',
+                            url:"https://api.spacexdata.com/v3/payloads/"+site_Id+"",    
+                            success:function(res){
+                                document.getElementById("mission3").innerHTML=res.nationality;
+                                document.getElementById("mission4").innerHTML=res.manufacturer;
+                                document.getElementById("mission5").innerHTML=res.payload_type;
+                                document.getElementById("mission6").innerHTML=res.payload_mass_kg;
+                                document.getElementById("mission7").innerHTML=res.payload_mass_lbs;
+                                document.getElementById("mission8").innerHTML=res.orbit;
+                                document.getElementById("mission9").innerHTML=res.orbit_params.reference_system;
+                                document.getElementById("mission10").innerHTML=res.orbit_params.regime;
+                                document.getElementById("mission11").innerHTML=res.orbit_params.longitude; 
+                                document.getElementById("mission12").innerHTML=res.orbit_params.semi_major_axis_km;
+                                document.getElementById("mission13").innerHTML=res.orbit_params.eccentricity;
+                                document.getElementById("mission14").innerHTML=res.orbit_params.periapsis_km;
+                                document.getElementById("mission15").innerHTML=res.orbit_params.apoapsis_km;
+                                document.getElementById("mission16").innerHTML=res.orbit_params.inclination_deg;
+                                document.getElementById("mission17").innerHTML=res.orbit_params.lifespan_years;
+                                $("#myModal1").modal("toggle")
+                            }
+                        })
+                } 
+
+                
+
+
+            $.ajax({
+              url: "https://api.spacexdata.com/v3/missions", 
+              success: function(result){
+          
+                $("#mission").empty();
+                $("#mission").show();
+                var $ulElement = $("<ul />").addClass("list-group");
+                result.forEach(function(r){
+                  var mname = $("<p />").text("Mission Name: "+r.mission_name)
+                  var mid = $("<p />").text("Mission Id: "+r.mission_id)
+                  var mdetails=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-info btn-lg")
+                  mdetails.on("click",popup)
+                  // var manufacturers = $("<p />").text("Manufacturers: "+r.manufacturers)
+                  var wikiLink = $("<p />").html("Link: <a href='"+r.wikipedia+"'>Wiki link</a>")
+                  var website = $("<p />").html("Link: <a href='"+r.website+"'>Web link</a>")
+                  var twitter = $("<p />").html("Link: <a href='"+r.twitter+"'>twitter link</a>")
+                  // var description = $("<p />").text("Description: "+r.description)
+                  var liContent = $("<div />")
+                  liContent.append(mname)
+                  liContent.append(mid)
+                  liContent.append(mdetails)
+                  // liContent.append(manufacturers)
+                  liContent.append(wikiLink)
+                  liContent.append(website)
+                  liContent.append(twitter)
+                  // liContent.append(description)
+                  r.payload_ids.forEach(function(payload_id){
+                  console.log(payload_id);
+                  var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
+                  payload.on("click",popup1);
+                  liContent.append(payload);
+                  })
+                    
+                  
+
+                  var liElement = $("<li />").addClass("list-group-item").append(liContent)
+                  
+                  $ulElement.append(liElement)
+                  
+                });
+
+                $("#mission").append($ulElement);
+                
+              }
+            });
+          });
+
+        </script>
+    </body>
+</html>
