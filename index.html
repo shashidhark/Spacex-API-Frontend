@@ -32,7 +32,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="companyinfo.html">Home<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="companyinfo.html" >Home<span class="sr-only">(current)</span></a></li>
                 <li><a href="#" id="companyinfo" >Company Info</a></li>
                 <li><a href="#" id="apiinfo">Api Info</a></li>
               </ul>
@@ -48,7 +48,7 @@
                     <h3>HISTORY</h3>
                    
                     
-                  <p><a href="history.html" class="btn btn-primary" role="button">CLICK HERE</a></p>
+                  <p><a href="history.html" class="btn btn-primary" role="button" target="_blank" rel="noopener noreferrer">CLICK HERE</a></p>
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@
                   <div class="caption">
                     <h3>PAYLOAD</h3>
                    
-                    <p><a href="payload.html" class="btn btn-primary" role="button">CLICK HERE</a></p>
+                    <p><a href="payload.html" class="btn btn-primary" role="button" target="_blank" rel="noopener noreferrer">CLICK HERE</a></p>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@
                     <div class="caption">
                       <h3>LAUNCH PADS</h3>
                       
-                      <p><a href="launchpads.html" class="btn btn-primary" role="button">CLICK HERE</a></p>
+                      <p><a href="launchpads.html" class="btn btn-primary" role="button" target="_blank" rel="noopener noreferrer">CLICK HERE</a></p>
                     </div>
                   </div>
                 </div>
@@ -76,7 +76,7 @@
                     <div class="caption">
                       <h3>SHIP</h3>
                      
-                      <p><a href="ships.html" class="btn btn-primary" role="button">CLICK HERE</a></p>
+                      <p><a href="ships.html" class="btn btn-primary" role="button" target="_blank" rel="noopener noreferrer">CLICK HERE</a></p>
                     </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div class="thumbnail"  style="height:150px;">  
                   <div class="caption">
                     <h3>MISSION</h3>
-                    <p><a href="mission.html" class="btn btn-primary" role="button">CLICK HERE</a> </p>
+                    <p><a href="mission.html" class="btn btn-primary" role="button" target="_blank" rel="noopener noreferrer">CLICK HERE</a> </p>
                   </div>
                 </div>
               </div>
@@ -151,48 +151,7 @@
                     </div>
                   </div>
         
-       <Script>
-            $(document).ready(function(){
-                if($("#companyinfo").click(function()
-                {
-                 $.ajax({
-                 url:"https://api.spacexdata.com/v3/info",
-                 success:function(result){
-                 var name=$("#name").html("<b>Name:</b>"+result.name)
-                 var founder=$("#founder").html("<b>Founder:</b>"+result.founder)
-                 var name=$("#founded").html("<b>Founded in:</b>"+result.founded)
-                 var name=$("#employees").html("<b>Employees:</b>"+result.employees)
-                 var name=$("#vehicles").html("<b>Vehicles:</b>"+result.vehicles)
-                 var name=$("#launchsites").html("<b>Launch sites:</b>"+result.launch_sites)
-                 var name=$("#testsites").html("<b>Test Sites:</b>"+result.test_sites)
-                 var name=$("#headquarters").html("<b>Headquarters:</b>"+result.headquarters.address)
-                 var name=$("#summary").html("<b>Name:</b>"+result.summary)
-                 $('#myModal').modal('toggle');
-             }
-             });
-        }));
-    })
-       </Script>
-       <script>
-           $(document).ready(function()
-           {
-               if($("#apiinfo").click(function(){
-                    $.ajax({
-                        url:"https://api.spacexdata.com/v3",
-                        success:function(res)
-                        {
-                            var projectname=$("#projectname").html("<b>Project Name:</b>"+res.project_name)
-                            var version=$("#version").html("<b>Version:</b>"+res.version)
-                            var organization=$("#organization").html("<b>Organization:</b>"+res.organization)
-                            var description=$("#description").html("<b>Description:</b>"+res.description)
-                            var project_link=$("#project_link").html("<b>Link:</b><a href='"+res.project_link+"'>Project_link</a>")
-                            var organization_link=$("#organization_link").html("<b>Link:</b><a href='"+res.organization_link+"'>Organization_link</a>")
-                            $("#apiInfo").modal("toggle");  
-                        }
-                    })
-               }));
-           })
-       </script>
+         <script src="./assets/js/scriptsmodel.js"></script>
          <script src="./assets/js/bootstrap.min.js"></script>
     </body>
 </html>
