@@ -11,7 +11,6 @@
     <link href="./assets/css/navbar.css" rel="stylesheet">
     <body>
             <div class="container">
-
                     <!-- Static navbar -->
                     <nav class="navbar navbar-default">
                       <div class="container-fluid">
@@ -60,15 +59,6 @@
                   </div>
             <script src="./assets/js/jquery.min.js"></script>
             <script src="./assets/js/bootstrap.min.js"></script>
-
-
-          
-
-
-
-           
-
-
             <script type="text/javascript">
             $(document).ready(function()
             {
@@ -82,18 +72,18 @@
                             url:"https://api.spacexdata.com/v3/launchpads/"+site_Id,   
                             
                             success:function(res){
-                                    $("#status").text("Status:"+res.status); 
-                                    $("#locationName").text("Location Name:"+res.location.name); 
-                                    $("#vehiclesLaunced").text("Vehicles Launched:"+res.vehicles_launched); 
-                                    $("#siteName").text("Site Name:"+res.site_name_long); 
-                                    $("#attempted_launches").text("Attempted Launches:"+res. attempted_launches); 
-                                    $("#successful_launches").text("Successful Launches:"+res.successful_launches); 
-                                    $("#details").text("Details:"+res.details); 
-                                let  latitude1=res.location.latitude;
-                                let  longitude1=res.location.longitude;
-                                let  lName=res.location.name;
+                                    $("#status").html("<b>Status:</b>"+res.status); 
+                                    $("#locationName").html("<b>Location Name:</b>"+res.location.name); 
+                                    $("#vehiclesLaunced").html("<b>Vehicles Launched:</b>"+res.vehicles_launched); 
+                                    $("#siteName").html("<b>Site Name:</b>"+res.site_name_long); 
+                                    $("#attempted_launches").html("<b>Attempted Launches:</b>"+res. attempted_launches); 
+                                    $("#successful_launches").html("<b>Successful Launches:</b>"+res.successful_launches); 
+                                    $("#details").html("<b>Details:</b>"+res.deails); 
+                                    let  latitude1=res.location.latitude;
+                                    let  longitude1=res.location.longitude;
+                                    let  lName=res.location.name;
                                      loadMap(latitude1,longitude1,lName);
-                                //  let markers=getJSONMapMarkers(latitude1,longitude1);
+                            
                                 
                                        $('#myModal').modal('toggle');
                             
@@ -107,12 +97,12 @@
                         $("#Launch").empty();
                         var $ul=$("<ul/>").addClass("list-group");
                         result.forEach(r=> {
-                            var id=$("<p/>").text("id:  "+r.id);
-                            var status=$("<p/>").text("status:"+r.status);
-                            var Location=$("<p/>").text("Location:"+r.location.name);
+                            var id=$("<p/>").html("<b>Id:</b>  "+r.id);
+                            var status=$("<p/>").html("<b>Status:</b>"+r.status);
+                            var Location=$("<p/>").html("<b>Location:</b>"+r.location.name);
                             var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.site_id+"/>").text("Details").addClass("btn btn-info btn-lg")
                             detailButton.on("click",knowDetails);
-                            var liconntent=$("<div/>");
+                            var liconntent=$("<div style=Background-color:#fbf5f5;/>");
                             liconntent.append(id);
                             liconntent.append(status);
                             liconntent.append(Location);
@@ -127,26 +117,6 @@
             });
             </script>
           <script>
-       
-        //    function getJSONMarkers() {
-        //      debugger
-        //   const markers = [
-        //     // {
-        //     //   name:  "Rixos The Palm",
-        //     //   location: [Number(lt), Number(lg)]
-        //     // }
-        //     {
-        //       name: "Shangri-La Hotel",
-        //       location: [25.2084, 55.2719]
-        //     },
-        //     {
-        //       name: "Grand Hyatt",
-        //       location: [25.2285, 55.3273]
-        //     }
-        //   ];
-        //   return markers;
-        // }
-
         function getJSONMapMarkers(lt,lg,lname) {
           const markers = [
             {
@@ -160,37 +130,117 @@
 
         function loadMap(lt,lg,lname) {
           // Initialize Google Maps
-          var styledMapType = new google.maps.StyledMapType(
-            [
-            {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
-              {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
-              {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
-              {
-                featureType: 'administrative',
-                elementType: 'geometry.stroke',
-                stylers: [{color: '#c9b2a6'}]
-              },
-              ]
-              {name: 'Styled Map'});
+          // var styledMapType = new google.maps.StyledMapType(
+          //   [
+          //   {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
+          //     {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
+          //     {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
+          //     {
+          //       featureType: 'administrative',
+          //       elementType: 'geometry.stroke',
+          //       stylers: [{color: '#c9b2a6'}]
+          //     },
+          //     ]
+          //     {name: 'Styled Map'});
               
           const mapOptions = {
             center:new google.maps.LatLng(25.2048, 55.2708),
             zoom: 4,
-            mapTypeControlOptions: {
-            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain','styled_map']
+            styles: [
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca5b3'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#746855'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#1f2835'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
             }
+          ]
+            // mapTypeControlOptions: {
+            // mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain','styled_map']
+            // }
           }
           const map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
           // Load JSON Data
-          const hotelMarkers = getJSONMapMarkers(lt,lg,lname);
+          const launchpadmarkers = getJSONMapMarkers(lt,lg,lname);
 
           // Initialize Google Markers
-          for(hotel of hotelMarkers) {
+          for(lpads of launchpadmarkers) {
             let marker = new google.maps.Marker({
               map: map,
-              position: new google.maps.LatLng(hotel.location[0], hotel.location[1]),
-              title: hotel.name
+              position: new google.maps.LatLng(lpads.location[0], lpads.location[1]),
+              title: lpads.name
             })
           }
         }
