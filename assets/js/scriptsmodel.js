@@ -31,8 +31,8 @@
                     var version=$("#version").html("<b>Version:</b>"+res.version)
                     var organization=$("#organization").html("<b>Organization:</b>"+res.organization)
                     var description=$("#description").html("<b>Description:</b>"+res.description)
-                    var project_link=$("#project_link").html("<b>Link:</b><a  href='"+res.project_link+"'>Project_link</a>")
-                    var organization_link=$("#organization_link").html("<b>Link:</b><a href='"+res.organization_link+"'>Organization_link</a>")
+                    var project_link=$("#project_link").html("<b>Link:</b><a target=_blank href='"+res.project_link+"'>Project_link</a>")
+                    var organization_link=$("#organization_link").html("<b>Link:</b><a target=_blank href='"+res.organization_link+"'>Organization_link</a>")
                     $("#apiInfo").modal("toggle");  
                 }
             })
