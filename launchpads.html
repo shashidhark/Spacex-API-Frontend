@@ -11,10 +11,8 @@
     <link href="./assets/css/navbar.css" rel="stylesheet">
     <body>
             <div class="container">
-                    <!-- Static navbar -->
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
-                          <!-- Brand and toggle get grouped for better mobile display -->
                           <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                               <span class="sr-only">Toggle navigation</span>
@@ -24,26 +22,21 @@
                             </button>
                             <a class="navbar-brand" href="#">SpaceX Api</a>
                           </div>
-                      
-                          <!-- Collect the nav links, forms, and other content for toggling -->
                           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                               <li class="active"><a href="index.html" >Home<span class="sr-only">(current)</span></a></li>
                               <li><a href="#" id="companyinfo" >Company Info</a></li>
                               <li><a href="#" id="apiinfo">Api Info</a></li>
                             </ul>
-                          </div><!-- /.navbar-collapse -->
-                        </div><!-- /.container-fluid -->
+                          </div>
+                        </div>
                       </nav>
                     <h4>Launch Pads</h4>
                     <div id="Launch">Loading ....</div>
-                </div> <!-- /container -->
-
-            <!-- Modal classes -->
+                </div> 
             <div id="myModalmap" class="modal fade" role="dialog">
                     <div class="modal-dialog">
-                  
-                      <!-- Modal content-->
+                      <!-- Modal map content-->
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -66,14 +59,11 @@
                   
                     </div>
                   </div>
-                   <!-- Modal classes -->
+                   <!-- Modal company classes -->
    <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
-    
-        <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            
                <h4 style="width:87%;text-align: center" class="modal-title">COMPANY INFO</h4>
           </div>
           <div class="modal-body" id="val">
@@ -91,20 +81,13 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
-    
       </div>
     </div>
-
-
-   <!-- API Info -->
-      <!-- Modal classes -->
+      <!-- ModalApi info classes -->
 <div id="apiInfo" class="modal fade" role="dialog">
       <div class="modal-dialog">
-    
-        <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            
                <h4 style="width:87%;text-align: center" class="modal-title">API INFO</h4>
           </div>
           <div class="modal-body" id="val">
@@ -122,8 +105,8 @@
     
       </div>
     </div>
-            </body>
-        </html>
+  </body>
+</html>
             
             <script src="./assets/js/jquery.min.js"></script>
             <script src="./assets/js/bootstrap.min.js"></script>
@@ -185,17 +168,15 @@
             });
             </script>
           <script>
-        function getJSONMapMarkers(lt,lg,lname) {
-          const markers = [
-            {
-              name:  lname,
-              location: [Number(lt), Number(lg)]
-            }
-          ];
-          return markers;
-        }
-
-
+              function getJSONMapMarkers(lt,lg,lname) {
+               const markers = [
+               {
+                  name:  lname,
+                  location: [Number(lt), Number(lg)]
+               }
+              ];
+              return markers;
+             }
         function loadMap(lt,lg,lname) {
           const mapOptions = {
             center:new google.maps.LatLng(25.2048, 55.2708),
@@ -280,15 +261,9 @@
               stylers: [{color: '#17263c'}]
             }
           ]
-            // mapTypeControlOptions: {
-            // mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain','styled_map']
-            // }
           }
           const map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-          // Load JSON Data
           const launchpadmarkers = getJSONMapMarkers(lt,lg,lname);
-
           // Initialize Google Markers
           for(lpads of launchpadmarkers) {
             let marker = new google.maps.Marker({
