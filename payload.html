@@ -215,6 +215,11 @@
                                 $('#myModalpayloads').modal('toggle');
                             }
                         })
+                        .fail(function(){ 
+                          $(".popup1").empty();
+                          $(".popup1").append("No Data Found");
+                          $('#myModalpayloads').modal('toggle');
+                        }) ;
                 } 
 
             $.ajax({
@@ -246,7 +251,7 @@
                   r.payload_ids.forEach(function(payload_id){
                     var payload=$("<p />").html(" <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a>").addClass("btn")
                     payload.on("click",popup1);
-                    liContent.append(payload,",");
+                    liContent.append(payload,"|");
                     
                   })
                   liContent.append("</br>");
