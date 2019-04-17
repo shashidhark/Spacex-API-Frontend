@@ -149,15 +149,15 @@
                         $("#Launch").empty();
                         var $ul=$("<span/>").addClass("list-group");
                         res.forEach(r=> {
-                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
-                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var Cserial=$("<p/>").html('<b>Capsule Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>Capsule id:</b>' +r.capsule_id); 
                             var status=$("<p/>").html('<b>Status:</b>' +r.status); 
                             var original_launch=$("<p/>").html('<b>Original Launch:</b>' +r.original_launch); 
-                            var original_launch_unix=$("<p/>").html('<b>original_launch_unix:</b>' +r.original_launch_unix); 
-                            var landings=$("<p/>").html('<b>landings:</b>' +r.landings); 
-                            var type=$("<p/>").html('<b>type:</b>' +r.type); 
-                            var details=$("<p/>").html('<b>details:</b>' +r.details); 
-                            var reuse_count=$("<p/>").html('<b>reuse_count:</b>' +r.reuse_count); 
+                            var original_launch_unix=$("<p/>").html('<b>Original launch unix:</b>' +r.original_launch_unix); 
+                            var landings=$("<p/>").html('<b>Landings:</b>' +r.landings); 
+                            var type=$("<p/>").html('<b>Type:</b>' +r.type); 
+                            var details=$("<p/>").html('<b>Details:</b>' +r.details); 
+                            var reuse_count=$("<p/>").html('<b>Reuse count:</b>' +r.reuse_count); 
                             var liconntent=$("<div/>");
                             liconntent.append(Cserial);
                             liconntent.append(status);
@@ -187,15 +187,15 @@
                         $("#Launch").empty();
                         var $ul=$("<span/>").addClass("list-group");
                         res.forEach(r=> {
-                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
-                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var Cserial=$("<p/>").html('<b>Capsule Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>Capsule id:</b>' +r.capsule_id); 
                             var status=$("<p/>").html('<b>Status:</b>' +r.status); 
                             var original_launch=$("<p/>").html('<b>Original Launch:</b>' +r.original_launch); 
-                            var original_launch_unix=$("<p/>").html('<b>original_launch_unix:</b>' +r.original_launch_unix); 
-                            var landings=$("<p/>").html('<b>landings:</b>' +r.landings); 
-                            var type=$("<p/>").html('<b>type:</b>' +r.type); 
-                            var details=$("<p/>").html('<b>details:</b>' +r.details); 
-                            var reuse_count=$("<p/>").html('<b>reuse_count:</b>' +r.reuse_count); 
+                            var original_launch_unix=$("<p/>").html('<b>Original launch unix:</b>' +r.original_launch_unix); 
+                            var landings=$("<p/>").html('<b>Landings:</b>' +r.landings); 
+                            var type=$("<p/>").html('<b>Type:</b>' +r.type); 
+                            var details=$("<p/>").html('<b>Details:</b>' +r.details); 
+                            var reuse_count=$("<p/>").html('<b>Reuse count:</b>' +r.reuse_count); 
                             var liconntent=$("<div/>");
                             liconntent.append(Cserial);
                             liconntent.append(status);
@@ -229,8 +229,8 @@
                         $("#Launch").empty();
                         var $ul=$("<span/>").addClass("list-group");
                         result.forEach(r=> {
-                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
-                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var Cserial=$("<p/>").html('<b>Capsule Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>Capsule id:</b>' +r.capsule_id); 
                             var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.capsule_serial+"/>").text("Details").addClass("btn btn-info")
                             detailButton.on("click",knowDetails);
                             var liconntent=$("<div/>");
@@ -256,15 +256,15 @@
                             success:function(res){
                                 var liconntent=$("<div/>");
                                  $("#capsule7").empty();
-                                $("#capsule2").html('<b>Capsule_serial:</b>'+res.capsule_serial);
-                                $("#capsule3").html('<b>Capsule_id:</b>'+res.capsule_id); 
+                                $("#capsule2").html('<b>Capsule Serial:</b>'+res.capsule_serial);
+                                $("#capsule3").html('<b>Capsule id:</b>'+res.capsule_id); 
                                 $("#capsule4").html('<b>Status:</b>'+res.status); 
-                                $("#capsule5").html('<b>Original_launch:</b>'+res.original_launch);
-                                $("#capsule6").html('<b>Original_launch_unix:</b>'+res.original_launch_unix);
+                                $("#capsule5").html('<b>Original launch:</b>'+res.original_launch);
+                                $("#capsule6").html('<b>Original launch unix:</b>'+res.original_launch_unix);
                                 $("#capsule8").html('<b>Landings:</b>'+res.landings);
                                 $("#capsule9").html('<b>Type:</b>'+res.type);
                                 $("#capsule10").html('<b>Details:</b>'+res.details);
-                                $("#capsule11").html('<b>Reuse_count:</b>'+res.reuse_count);
+                                $("#capsule11").html('<b>Reuse count:</b>'+res.reuse_count);
                                 $("#mission1").html('<b>Capsule Missions:</b>');
                                
                                 res.missions.forEach(function(mission){
@@ -286,8 +286,8 @@
                         $("#Launch").empty();
                         var $ul=$("<span/>").addClass("list-group");
                         result.forEach(r=> {
-                            var Cserial=$("<p/>").html('<b>Capsule_Serial: </b>'+r.capsule_serial);
-                            var cid=$("<p/>").html('<b>capsule_id:</b>' +r.capsule_id); 
+                            var Cserial=$("<p/>").html('<b>Capsule Serial: </b>'+r.capsule_serial);
+                            var cid=$("<p/>").html('<b>Capsule id:</b>' +r.capsule_id); 
                             var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.capsule_serial+"/>").text("Details").addClass("btn btn-info")
                             detailButton.on("click",knowDetails);
                             var liconntent=$("<div/>");
