@@ -24,7 +24,7 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <li class="active"><a href="companyinfo.html" >Home<span class="sr-only">(current)</span></a></li>
+                  <li class="active"><a href="index.html" >Home<span class="sr-only">(current)</span></a></li>
                   <li><a href="#" id="companyinfo" >Company Info</a></li>
                   <li><a href="#" id="apiinfo">Api Info</a></li>
                 </ul>
@@ -244,7 +244,7 @@
                   var label1=$("<p />").text('Pay-Load Ids: ');
                   liContent.append(label1)
                   r.payload_ids.forEach(function(payload_id){
-                    var payload=$("<p />").html(" <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a>").addClass("btn")
+                    var payload=$("<p />").html(" <a data-itemid='"+payload_id+"'> "+payload_id+"  </a>").addClass("btn")
                     payload.on("click",popup1);
                     liContent.append(payload,",");
                     
@@ -257,14 +257,14 @@
                   
                   $ulElement.append(liElement)
                   
+                  var liElement = $("<li />").addClass("list-group-item").append(liContent)                  
+                  $ulElement.append(liElement)                  
                 });
 
                 $("#mission").append($ulElement);
-                
               }
             });
           });
-
         </script>
     </body>
 </html>
