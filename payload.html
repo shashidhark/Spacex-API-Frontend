@@ -196,13 +196,13 @@
                                 $.each( res, function( key, value ) {
                                   var key1 = key.split("_").join(" ");
                                     if(key=="orbit_params"){
-                                        
-                                    }else
-                                    $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
-                                    //res.orbit_params.hide();
+
+                                    }else{
+                                      $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
+                                    }
                                     
                                       
-                                 // }
+                                 
 
                                 });
                                 $.each( res.orbit_params, function( key, value ) {
@@ -235,15 +235,27 @@
                   var liContent = $("<div />")
                   liContent.append(mname)
                   liContent.append(mid)
-                  liContent.append(mdetails)
+                
+                  liContent.append(wikiLink)
                   liContent.append(wikiLink)
                   liContent.append(website)
                   liContent.append(twitter)
+
+                  var label1=$("<p />").text('Pay-Load Ids: ');
+                  liContent.append(label1)
                   r.payload_ids.forEach(function(payload_id){
-                    var payload=$("<p />").html("Payload ids: <a data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
+                    var payload=$("<p />").html(" <a data-itemid='"+payload_id+"'> "+payload_id+"  </a>").addClass("btn")
                     payload.on("click",popup1);
-                    liContent.append(payload);
+                    liContent.append(payload,",");
+                    
                   })
+                  liContent.append("</br>");
+                  liContent.append(mdetails);
+                  
+
+                  var liElement = $("<li />").addClass("list-group-item").append(liContent)
+                  
+                  $ulElement.append(liElement)
                   
                   var liElement = $("<li />").addClass("list-group-item").append(liContent)                  
                   $ulElement.append(liElement)                  
