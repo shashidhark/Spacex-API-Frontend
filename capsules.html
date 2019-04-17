@@ -1,12 +1,8 @@
 <html>
   <head>
-    <style>
-  #map {
-        height: 100%;
-      }
-    </style>
+      <title>CAPSULES</title>
   </head>
-    <title>CAPSULES</title>
+    
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/css/navbar.css" rel="stylesheet">
     
@@ -40,9 +36,9 @@
                     
                     </br>
 
-                    <button type="button" class="btn btn-primary" onclick="move()" id="upcoming">Upcoming Capsules</button>
-                <button type="button" class="btn btn-warning" onclick="move()" id="past">Past Capsules</button>
-                <button type="button" class="btn btn-success" onclick="move()" id="initial">Initial Capsules</button>
+                    <button type="button" class="btn btn-primary" id="upcoming">Upcoming Capsules</button>
+                <button type="button" class="btn btn-warning"  id="past">Past Capsules</button>
+                <button type="button" class="btn btn-success" id="initial">Initial Capsules</button>
                   </br></br>
                     <div id="Launch">Loading ....</div>
                 </div> <!-- /container -->
@@ -210,10 +206,7 @@
                             liconntent.append(type);
                             liconntent.append(details);
                             liconntent.append(reuse_count);
-                            //liconntent.append(details);
                             var lielement=$("<span/>").addClass("list-group-item").append(liconntent);
-                            debugger
-                            //console.log(r.missions.flight);
                             r.missions.forEach(function(mission){
                                 for(var key in mission){
                                     var name=$("<p/>").html('<b>'+jsUcfirst(key)+"</b> : "+mission[key]);
