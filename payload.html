@@ -198,11 +198,11 @@
                                     if(key=="orbit_params"){
 
                                     }else{
-                                    $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
-                                    }//res.orbit_params.hide();
+                                      $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
+                                    }
                                     
                                       
-                                 // }
+                                 
 
                                 });
                                 $.each( res.orbit_params, function( key, value ) {
@@ -241,7 +241,7 @@
                   liContent.append(wikiLink)
                   liContent.append(website)
                   liContent.append(twitter)
-                  debugger
+
                   var label1=$("<p />").text('Pay-Load Ids: ');
                   liContent.append(label1)
                   r.payload_ids.forEach(function(payload_id){
