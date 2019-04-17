@@ -41,7 +41,7 @@
         <!-- Modal body -->
         <div class="modal-body" id="mission2" >
           <b></b> 
-          <div class="keerthan">
+          <div class="popup1">
 
           </div>
         
@@ -94,10 +94,25 @@
                             success:function(res){
                               var liconntent=$("<div/>");
                                 debugger
-                                $(".keerthan").empty();
+                                $(".popup1").empty();
                                 //-----My Code starts----------------
                                 $.each( res, function( key, value ) {
-                                  $(".keerthan").append('<b>'+key +"</b> :" + value + "<BR>");
+                                  debugger
+                                  var key1 = key.split("_").join(" ");
+                                  var urlRegex = new RegExp(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/);
+                                  //var txtfield = value /*this is a textarea*/
+                                  //console.log($('.popup1').val());
+                                   //var VAL = value;
+                                   //value="www.fb.com";
+                                  
+                                  //if ( urlRegex.test(txtfield) ){
+                                    if(urlRegex.test(value)){
+                                       //do something about it
+                                       debugger
+                                       //alert("hi");
+                                       $(".popup1").append('<b>'+jsUcfirst(key1)+':</b><a href="'+value+'" target="_blank">'+jsUcfirst(key1)+'</a><BR>');
+                                  }else{
+                                    $(".popup1").append('<b>'+jsUcfirst(key1) +"</b> :" + value + "<BR>");}
                                 });
 
                                 //-----My Code ends--------------------
@@ -105,6 +120,11 @@
                             }
                         })
                 } 
+
+                function jsUcfirst(string) 
+                {
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
 
                 function popup1()
                 {
@@ -116,32 +136,16 @@
                             //type: 'GET',
                             url:"https://api.spacexdata.com/v3/payloads/"+site_Id+"",    
                             success:function(res){
-                             // $("#pay1").empty();
-                                // $("#mission3").html('<b>Nationality:</b>'+res.nationality);
-                                // $("#mission4").html('<b>manufacturer:</b>'+res.manufacturer);
-                                // $("#mission5").html('<b>payload_type:</b>'+res.payload_type);
-                                // $("#mission6").html('<b>payload_mass_kg:</b>'+res.payload_mass_kg);
-                                // $("#mission7").html('<b>orbit:</b>'+res.orbit);
-                                // $("#mission8").html('<b>orbit_params.reference_system:</b>'+res.orbit_params.reference_system);
-                                // $("#mission9").html('<b>orbit_params.regime:</b>'+res.orbit_params.regime);
-                                // $("#mission10").html('<b>orbit_params.longitude:</b>'+res.orbit_params.longitude);
-                                // $("#mission11").html('<b>semi_major_axis_km:</b>'+res.orbit_params.semi_major_axis_km);
-                                // $("#mission12").html('<b>eccentricity:</b>'+res.orbit_params.eccentricity);
-                                // $("#mission13").html('<b>Nationality:</b>'+res.orbit_params.periapsis_km);
-                                // $("#mission14").html('<b>Nationality:</b>'+res.orbit_params.apoapsis_km);
-                                // $("#mission15").html('<b>Nationality:</b>'+res.orbit_params.inclination_deg);
-                                // $("#mission16").html('<b>Nationality:</b>'+res.orbit_params.lifespan_years);
-                                // $("#mission17").html('<b>Nationality:</b>'+res.payload_mass_lbs);
-                               // alert("hi");
-                               $(".keerthan").empty();
+                             
+                               $(".popup1").empty();
                                 //-----My Code starts----------------
                                 $.each( res, function( key, value ) {
-                                  $(".keerthan").append('<b>'+key +"</b> :" + value + "<BR>");
+                                  var key1 = key.split("_").join(" ");
+                                  $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
                                 });
 
                                 //-----My Code ends--------------------
                                 $('#myModal').modal('toggle');
-                               // $("#myModal2").modal("toggle")
                             }
                         })
                 } 
