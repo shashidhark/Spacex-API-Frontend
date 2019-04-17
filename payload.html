@@ -4,7 +4,6 @@
         <title>payload ids</title>
         <link href="./assets/css/navbar.css" rel="stylesheet">
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container">
@@ -182,6 +181,7 @@
 
                 function popup1()
                 {
+                  debugger
                         var site_Id=$(this).find("a").data("itemid");
                         console.log(site_Id)
                         
@@ -192,13 +192,27 @@
                              
                                $(".popup1").empty();
                                 //-----My Code starts----------------
+                                debugger
                                 $.each( res, function( key, value ) {
                                   var key1 = key.split("_").join(" ");
-                                  $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
+                                    if(key=="orbit_params"){
+                                        
+                                    }else
+                                    $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
+                                    //res.orbit_params.hide();
+                                    
+                                      
+                                 // }
+
+                                });
+                                $.each( res.orbit_params, function( key, value ) {
+                                        //$(".popup1").empty();
+                                        var key1 = key.split("_").join(" ");
+                                        $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
                                 });
 
                                 //-----My Code ends--------------------
-                                $('#myModal').modal('toggle');
+                               // $('#myModal').modal('toggle');
                                 $('#myModalpayloads').modal('toggle');
                             }
                         })
