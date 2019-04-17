@@ -104,7 +104,7 @@
                       <div class="modal-content" style="width:auto;" >
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title"></h4>
+                          <h4 class="modal-title"> SHIPS DETAILS</h4>
                         </div>
                         <div class="modal-body" id="val">
                           <p id="ship_id"> </p>
@@ -160,8 +160,12 @@
             <script src="./assets/js/bootstrap.min.js"></script>
             <script type="text/javascript">
             $(document).ready(function()
-            {
-                function jsUcfirst(string){
+             {
+            //     function jsUcfirst(string){
+            //         return string.charAt(0).toUpperCase() + string.slice(1);
+            //     }
+                function jsUcfirst(string) 
+                {
                     return string.charAt(0).toUpperCase() + string.slice(1);
                 }
 
@@ -198,6 +202,8 @@
                         })
                       
                 }
+               
+
                 $.ajax({
                     url:"https://api.spacexdata.com/v3/ships",
                     success: function(result){
@@ -206,7 +212,7 @@
                         result.forEach(r=> {
                             var id=$("<p/>").html('<b>SHIP ID: </b>'+r.ship_id);
                             var status=$("<p/>").html('<b>SHIP NAME:</b>' +r.ship_name);
-                            var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.ship_id+"/>").text("Details").addClass("btn btn-info btn-lg")
+                            var detailButton=$("<Button data-toggle= modal  data-target=myModal  data-id="+r.ship_id+"/>").text("Details").addClass("btn btn-primary")
                             detailButton.on("click",knowDetails);
                             var liconntent=$("<div/>");
                             liconntent.append(id);
