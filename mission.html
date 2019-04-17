@@ -125,13 +125,10 @@
         <script src="./assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
           $(document).ready(function(){
-
-             debugger
              function popup()
                 {
                         var site_Id=$(this).data("id");
-                        console.log(site_Id)
-                        debugger
+
                         $.ajax({
                             //type: 'GET',
                             url:"https://api.spacexdata.com/v3/missions/"+site_Id+"",    
@@ -161,7 +158,6 @@
             $.ajax({
               url: "https://api.spacexdata.com/v3/missions", 
               success: function(result){
-                  debugger
                 $("#mission").empty();
                 $("#mission").show();
                 var $ulElement = $("<ul />").addClass("list-group");
