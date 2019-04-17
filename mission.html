@@ -34,7 +34,7 @@
                 </div> -->
               </div><!--/.container-fluid -->
             </nav>
-            <h4>History</h4>
+            <h4>Missions</h4>
             <div id="mission">Loading ....</div>
           </div> 
 <!--code-->
@@ -50,7 +50,6 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body" id="mission2" >
-                      Modal body.. 
                       <p id=mission3></p>
                       <p id=mission4></p>
                       <p id=mission5></p>
@@ -108,7 +107,7 @@
                 result.forEach(function(r){
                   var mname = $("<p />").text("Mission Name: "+r.mission_name)
                   var mid = $("<p />").text("Mission Id: "+r.mission_id)
-                  var Btn1=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-info btn-lg")
+                  var Btn1=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-primary")
                   Btn1.on("click",popup)
                 
                    var manufacturers = $("<p />").text("Manufacturers: "+r.manufacturers)
