@@ -84,32 +84,19 @@
           $(document).ready(function(){
              function popup()
                 {
-                    debugger
                         var site_Id=$(this).data("id");
                         console.log(site_Id)
-                        debugger
                         $.ajax({
                             type: 'GET',
                             url:"https://api.spacexdata.com/v3/missions/"+site_Id+"",    
                             success:function(res){
                               var liconntent=$("<div/>");
-                                debugger
                                 $(".popup1").empty();
                                 //-----My Code starts----------------
                                 $.each( res, function( key, value ) {
-                                  debugger
                                   var key1 = key.split("_").join(" ");
                                   var urlRegex = new RegExp(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/);
-                                  //var txtfield = value /*this is a textarea*/
-                                  //console.log($('.popup1').val());
-                                   //var VAL = value;
-                                   //value="www.fb.com";
-                                  
-                                  //if ( urlRegex.test(txtfield) ){
                                     if(urlRegex.test(value)){
-                                       //do something about it
-                                       debugger
-                                       //alert("hi");
                                        $(".popup1").append('<b>'+jsUcfirst(key1)+':</b><a href="'+value+'" target="_blank">'+jsUcfirst(key1)+'</a><BR>');
                                   }else{
                                     $(".popup1").append('<b>'+jsUcfirst(key1) +"</b> :" + value + "<BR>");}
@@ -128,7 +115,6 @@
 
                 function popup1()
                 {
-                    debugger
                         var site_Id=$(this).find("a").data("itemid");
                         console.log(site_Id)
                         
