@@ -100,18 +100,14 @@
                   
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h4 class="modal-title">SpaceX API Mission Details</h4>
+                      <h4 class="modal-title">Mission Details</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     
                     <!-- Modal body -->
                     <div class="modal-body" id="mission2" >
-                      <p id=mission3></p>
-                      <p id=mission4></p>
-                      <p id=mission5></p>
-                      <p id=mission6></p>
-                      <p id=mission7></p>
-                      <p id=mission8></p>
+                      <div class="popup1"></div>
+                     
 
                     </div>
                     
@@ -140,18 +136,27 @@
                             //type: 'GET',
                             url:"https://api.spacexdata.com/v3/missions/"+site_Id+"",    
                             success:function(res){
-                                //$('#mission').html(res).modal('show');
-                                //$('#mission').html(res)
-                                document.getElementById("mission3").innerHTML=res.mission_name;
-                                document.getElementById("mission4").innerHTML=res.manufacturers;
-                                document.getElementById("mission5").innerHTML=res.wikipedia;
-                                document.getElementById("mission6").innerHTML=res.twitter;
-                                document.getElementById("mission7").innerHTML=res.description;
-                                document.getElementById("mission8").innerHTML=res.website;
-                                $("#myModalmission").modal("toggle")
+                                $(".popup1").empty();
+                                //-----My Code starts----------------
+                                $.each( res, function( key, value ) {
+                                  var key1 = key.split("_").join(" ");
+                                  var urlRegex = new RegExp(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/);
+                                  if(urlRegex.test(value)){
+                                     $(".popup1").append('<b>'+jsUcfirst(key1)+':</b><a href="'+value+'" target="_blank">'+jsUcfirst(key1)+'</a><BR>');
+                                 }else{
+                                    $(".popup1").append('<b>'+jsUcfirst(key1) +"</b> :" + value + "<BR>");
+                                 }
+                                });
+
+                                //-----My Code ends--------------------
+                                $('#myModalmission').modal('toggle');
                             }
                         })
                 } 
+                function jsUcfirst(string) 
+                {
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
 
             $.ajax({
               url: "https://api.spacexdata.com/v3/missions", 
@@ -163,27 +168,27 @@
                 result.forEach(function(r){
                   var mname = $("<p />").text("Mission Name: "+r.mission_name)
                   var mid = $("<p />").text("Mission Id: "+r.mission_id)
-                  var Btn1=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-primary")
-                  Btn1.on("click",popup)
+                  var Detailsbtn=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-primary")
+                  Detailsbtn.on("click",popup)
                 
                    var manufacturers = $("<p />").text("Manufacturers: "+r.manufacturers)
                    var wikiLink = $("<p />").html("Link: <a href='"+r.wikipedia+"'>Wiki link</a>")
                    var website = $("<p />").html("Link: <a href='"+r.website+"'>Web link</a>")
                    var twitter = $("<p />").html("Link: <a href='"+r.twitter+"'>twitter link</a>")
-                   var description = $("<p />").text("Description: "+r.description)
                 
                 
 
                   var liContent = $("<div />")
                   liContent.append(mname)
                   liContent.append(mid)
-                  liContent.append(Btn1)
+                  
 
                   liContent.append(manufacturers)
                   liContent.append(wikiLink)
                   liContent.append(website)
                   liContent.append(twitter)
-                  liContent.append(description)
+                  liContent.append(Detailsbtn)
+                  
                   
 
                   var liElement = $("<li />").addClass("list-group-item").append(liContent)
@@ -193,8 +198,7 @@
                 });
 
                 $("#mission").append($ulElement);
-                //$("#mission1").append($ulElement);
-                //$("#mission").append($ulElement1);
+                
               }
             });
           });
