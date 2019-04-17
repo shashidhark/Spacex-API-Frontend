@@ -4,46 +4,111 @@
         <title>payload ids</title>
         <link href="./assets/css/navbar.css" rel="stylesheet">
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container">
 
-            <!-- Static navbar -->
-                  <nav class="navbar navbar-default">
-              <div class="container-fluid">
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" >
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">Spacex API</a>
-                </div>
-               
-              </div><!--/.container-fluid -->
-            </nav>
-            <h4>History</h4>
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SpaceX Api</a>
+              </div>
+          
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="companyinfo.html" >Home<span class="sr-only">(current)</span></a></li>
+                  <li><a href="#" id="companyinfo" >Company Info</a></li>
+                  <li><a href="#" id="apiinfo">Api Info</a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+            <h4>PAYLOAD</h4>
             <div id="mission">Loading ....</div>
           </div> 
+             <!-- Modal classes -->
+             <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    
+                       <h4 style="width:87%;text-align: center" class="modal-title">COMPANY INFO</h4>
+                  </div>
+                  <div class="modal-body" id="val">
+                    <p id="name"> </p>
+                    <p id="founder"></p>
+                    <p id="founded"></p>
+                    <p id="employees"></p>
+                    <p id="vehicles"></p>
+                    <p id="launchsites"></p>
+                    <p id="testsites"> </p>
+                    <p id="headquarters"> </p>
+                    <p id="summary"> </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+
+
+           <!-- API Info -->
+              <!-- Modal classes -->
+      <div id="apiInfo" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    
+                       <h4 style="width:87%;text-align: center" class="modal-title">API INFO</h4>
+                  </div>
+                  <div class="modal-body" id="val">
+                    <p id="projectname"> </p>
+                    <p id="version"></p>
+                    <p id="organization"></p>
+                    <p id="description"></p>
+                    <p id="project_link"></p>
+                    <p id="organization_link"></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+
 <!--code-->
-<div class="modal" id="myModal">
+<div class="modal" id="myModalpayloads">
     <div class="modal-dialog">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">DETAILS</h4>
+          <h4 class="modal-title">PAY LOAD DETAILS</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body" id="mission2" >
-          <b>Details</b> 
-          <p id=mission3></p>
-          <p id=mission4></p>
-          <p id=mission7></p>
-        </div>
+          <b></b> 
+          <div class="popup1">
+
+          </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
@@ -54,49 +119,34 @@
     </div>
   </div>
 
-  <div class="modal" id="myModal1">
-    <div class="modal-dialog">
-      <div class="modal-content">
+      <!--anchor tag pop up starts-->
+      <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog" >
       
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">DETAILS</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!-- Modal content-->
+          <div class="modal-content" style="width:auto;" >
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">keerthan</h4>
+            </div>
+            <div class="modal-body" id="missions">
+                
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+         
+      
         </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body" >
-          <b>Payload details</b>
-          <p id=mission3></p>
-          <p id=mission3></p>
-          <p id=mission4></p>
-          <p id=mission5></p>
-          <p id=mission6></p>
-          <p id=mission7></p>
-          <p id=mission8></p>
-          <p id=mission9></p>
-          <p id=mission10></p>
-          <p id=mission11></p>
-          <p id=mission12></p>
-          <p id=mission13></p>
-          <p id=mission14></p>
-          <p id=mission15></p>
-          <p id=mission16></p>
-          <p id=mission17></p>
-
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
       </div>
-    </div>
-  </div>
+
+  
           <!-- /container -->
+       
         <script src="./assets/js/jquery.min.js"></script>
         <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/scriptsmodel.js"></script>
         <script type="text/javascript">
           $(document).ready(function(){
              function popup()
@@ -106,18 +156,42 @@
                         console.log(site_Id)
                         debugger
                         $.ajax({
-                            //type: 'GET',
+                            type: 'GET',
                             url:"https://api.spacexdata.com/v3/missions/"+site_Id+"",    
                             success:function(res){
-                                document.getElementById("mission3").innerHTML=res.mission_name;
-                                document.getElementById("mission4").innerHTML=res.manufacturers;
-                                document.getElementById("mission7").innerHTML=res.description;
-                                document.getElementById("mission9").innerHTML=res.payload_ids;
-                               
-                                $("#myModal").modal("toggle")
+                              var liconntent=$("<div/>");
+                                debugger
+                                $(".popup1").empty();
+                                //-----My Code starts----------------
+                                $.each( res, function( key, value ) {
+                                  debugger
+                                  var key1 = key.split("_").join(" ");
+                                  var urlRegex = new RegExp(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/);
+                                  //var txtfield = value /*this is a textarea*/
+                                  //console.log($('.popup1').val());
+                                   //var VAL = value;
+                                   //value="www.fb.com";
+                                  
+                                  //if ( urlRegex.test(txtfield) ){
+                                    if(urlRegex.test(value)){
+                                       //do something about it
+                                       debugger
+                                       //alert("hi");
+                                       $(".popup1").append('<b>'+jsUcfirst(key1)+':</b><a href="'+value+'" target="_blank">'+jsUcfirst(key1)+'</a><BR>');
+                                  }else{
+                                    $(".popup1").append('<b>'+jsUcfirst(key1) +"</b> :" + value + "<BR>");}
+                                });
+
+                                //-----My Code ends--------------------
+                                $('#myModalpayloads').modal('toggle');
                             }
                         })
                 } 
+
+                function jsUcfirst(string) 
+                {
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
 
                 function popup1()
                 {
@@ -129,22 +203,17 @@
                             //type: 'GET',
                             url:"https://api.spacexdata.com/v3/payloads/"+site_Id+"",    
                             success:function(res){
-                                document.getElementById("mission3").innerHTML=res.nationality;
-                                document.getElementById("mission4").innerHTML=res.manufacturer;
-                                document.getElementById("mission5").innerHTML=res.payload_type;
-                                document.getElementById("mission6").innerHTML=res.payload_mass_kg;
-                                document.getElementById("mission7").innerHTML=res.payload_mass_lbs;
-                                document.getElementById("mission8").innerHTML=res.orbit;
-                                document.getElementById("mission9").innerHTML=res.orbit_params.reference_system;
-                                document.getElementById("mission10").innerHTML=res.orbit_params.regime;
-                                document.getElementById("mission11").innerHTML=res.orbit_params.longitude; 
-                                document.getElementById("mission12").innerHTML=res.orbit_params.semi_major_axis_km;
-                                document.getElementById("mission13").innerHTML=res.orbit_params.eccentricity;
-                                document.getElementById("mission14").innerHTML=res.orbit_params.periapsis_km;
-                                document.getElementById("mission15").innerHTML=res.orbit_params.apoapsis_km;
-                                document.getElementById("mission16").innerHTML=res.orbit_params.inclination_deg;
-                                document.getElementById("mission17").innerHTML=res.orbit_params.lifespan_years;
-                                $("#myModal1").modal("toggle")
+                             
+                               $(".popup1").empty();
+                                //-----My Code starts----------------
+                                $.each( res, function( key, value ) {
+                                  var key1 = key.split("_").join(" ");
+                                  $(".popup1").append('<b>'+jsUcfirst(key1)+"</b> :" + value + "<BR>");
+                                });
+
+                                //-----My Code ends--------------------
+                                $('#myModal').modal('toggle');
+                                $('#myModalpayloads').modal('toggle');
                             }
                         })
                 } 
@@ -162,27 +231,22 @@
                 result.forEach(function(r){
                   var mname = $("<p />").text("Mission Name: "+r.mission_name)
                   var mid = $("<p />").text("Mission Id: "+r.mission_id)
-                  var mdetails=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-info btn-lg")
+                  var mdetails=$("<Button data-id="+r.mission_id+"/ >").text("Details").addClass("btn btn-primary")
                   mdetails.on("click",popup)
-                  // var manufacturers = $("<p />").text("Manufacturers: "+r.manufacturers)
-                  var wikiLink = $("<p />").html("Link: <a href='"+r.wikipedia+"'>Wiki link</a>")
-                  var website = $("<p />").html("Link: <a href='"+r.website+"'>Web link</a>")
-                  var twitter = $("<p />").html("Link: <a href='"+r.twitter+"'>twitter link</a>")
-                  // var description = $("<p />").text("Description: "+r.description)
+                  var wikiLink = $("<p />").html("Link: <a href='"+r.wikipedia+"'>Wikipedia link</a>")
+                  var website = $("<p />").html("Link: <a href='"+r.website+"'>Website link</a>")
+                  var twitter = $("<p />").html("Link: <a href='"+r.twitter+"'>Twitter link</a>")
                   var liContent = $("<div />")
                   liContent.append(mname)
                   liContent.append(mid)
                   liContent.append(mdetails)
-                  // liContent.append(manufacturers)
                   liContent.append(wikiLink)
                   liContent.append(website)
                   liContent.append(twitter)
-                  // liContent.append(description)
                   r.payload_ids.forEach(function(payload_id){
-                  console.log(payload_id);
-                  var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
-                  payload.on("click",popup1);
-                  liContent.append(payload);
+                    var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
+                    payload.on("click",popup1);
+                    liContent.append(payload);
                   })
                     
                   

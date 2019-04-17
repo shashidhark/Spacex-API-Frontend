@@ -13,25 +13,34 @@
             <div class="container">
                     <!-- Static navbar -->
                     <nav class="navbar navbar-default">
-                      <div class="container-fluid">
-                        <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button>
-                          <a class="navbar-brand" href="#">Spacex API</a>
-                        </div>
-                       
-                      </div><!--/.container-fluid -->
-                    </nav>
+                        <div class="container-fluid">
+                          <!-- Brand and toggle get grouped for better mobile display -->
+                          <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">SpaceX Api</a>
+                          </div>
+                      
+                          <!-- Collect the nav links, forms, and other content for toggling -->
+                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                              <li class="active"><a href="companyinfo.html" >Home<span class="sr-only">(current)</span></a></li>
+                              <li><a href="#" id="companyinfo" >Company Info</a></li>
+                              <li><a href="#" id="apiinfo">Api Info</a></li>
+                            </ul>
+                          </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                      </nav>
                     <h4>Launch Pads</h4>
                     <div id="Launch">Loading ....</div>
                 </div> <!-- /container -->
 
             <!-- Modal classes -->
-            <div id="myModal" class="modal fade" role="dialog">
+            <div id="myModalmap" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                   
                       <!-- Modal content-->
@@ -57,6 +66,65 @@
                   
                     </div>
                   </div>
+                   <!-- Modal classes -->
+   <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            
+               <h4 style="width:87%;text-align: center" class="modal-title">COMPANY INFO</h4>
+          </div>
+          <div class="modal-body" id="val">
+            <p id="name"> </p>
+            <p id="founder"></p>
+            <p id="founded"></p>
+            <p id="employees"></p>
+            <p id="vehicles"></p>
+            <p id="launchsites"></p>
+            <p id="testsites"> </p>
+            <p id="headquarters"> </p>
+            <p id="summary"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+
+
+   <!-- API Info -->
+      <!-- Modal classes -->
+<div id="apiInfo" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            
+               <h4 style="width:87%;text-align: center" class="modal-title">API INFO</h4>
+          </div>
+          <div class="modal-body" id="val">
+            <p id="projectname"> </p>
+            <p id="version"></p>
+            <p id="organization"></p>
+            <p id="description"></p>
+            <p id="project_link"></p>
+            <p id="organization_link"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+            </body>
+        </html>
+            
             <script src="./assets/js/jquery.min.js"></script>
             <script src="./assets/js/bootstrap.min.js"></script>
             <script type="text/javascript">
@@ -85,7 +153,7 @@
                                      loadMap(latitude1,longitude1,lName);
                             
                                 
-                                       $('#myModal').modal('toggle');
+                                       $('#myModalmap').modal('toggle');
                             
                                      }
                                     })
@@ -232,9 +300,9 @@
         }
              
           </script>
-          
-             <script src = "https://maps.googleapis.com/maps/api/js"></script>
-              
+             <script src="./assets/js/scriptsmodel.js"> </script>
 
+             <script src = "https://maps.googleapis.com/maps/api/js"></script>
+           
     </body>
 </html>
