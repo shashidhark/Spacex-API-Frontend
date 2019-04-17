@@ -240,25 +240,19 @@
                   liContent.append(website)
                   liContent.append(twitter)
                   r.payload_ids.forEach(function(payload_id){
-                    var payload=$("<p />").html("Payload ids: <a href='#' data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
+                    var payload=$("<p />").html("Payload ids: <a data-itemid='"+payload_id+"'> "+payload_id+"  </a></br>").addClass("btn")
                     payload.on("click",popup1);
                     liContent.append(payload);
                   })
-                    
                   
-
-                  var liElement = $("<li />").addClass("list-group-item").append(liContent)
-                  
-                  $ulElement.append(liElement)
-                  
+                  var liElement = $("<li />").addClass("list-group-item").append(liContent)                  
+                  $ulElement.append(liElement)                  
                 });
 
                 $("#mission").append($ulElement);
-                
               }
             });
           });
-
         </script>
     </body>
 </html>
